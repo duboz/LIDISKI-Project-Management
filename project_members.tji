@@ -1,0 +1,83 @@
+/*
+ *  Human ressources involved in the project
+ */
+
+/* 
+ *  CIRAD
+ */
+
+resource cirad "CIRAD" {
+  resource Coordinators "Coordinators"{
+    resource Arnaud "Arnaud Bataille" {
+      email "arnaud.bataille@cirad.fr"
+      rate 480
+    }
+    resource Raphael "Raphaël Duboz" {
+      email "raphael.duboz@cirad.fr"
+      Phone "+33(0)664938198"
+      rate 480
+    }
+  }
+  
+  resource Marion "Marion Bordier" {
+    email "marion.bordier@cirad.fr"
+    rate 350.0
+  }
+  resource Alexis "Alexis Delabouglisse" {
+    email "alexis.delabouglisse@cirad.fr"
+  }
+  resource Tancrede "Tancrède Voituriez" {
+    email "tancrede.voituriez@cirad.fr"
+  }
+  
+  flags cirad_team
+}
+
+/* 
+ *  NVRI
+ */
+
+resource nvri "NVRI" {
+  resource Bashir "Bashir" {
+    email "bashir@gmail.com"
+    Phone "x666"
+    rate 310.0
+  }
+  resource Shitu "Shitu" {
+    email "Shitu@gmail.com"
+    rate 300.0
+  }
+  flags nvri_team
+}
+
+/* 
+ *  IKORE
+ */
+
+resource ikore "IKORE" {
+  resource Gbenga "Gbenga" {
+    email "gbenga@gmail.com"
+    rate 310.0
+  }
+  resource Constance "Constance" {
+    email "u@gmail.com"
+    rate 300.0
+  }
+  flags ikore_team
+}
+
+/* 
+ *  IZSVe
+ */
+
+resource izsve "IZSVe" {
+  resource Alice "Alice Bianco" {
+     email "ABianco@izsvenezie.it"
+  }
+  resource Paolo "Paolo Lulatti" {
+     email "pmulatti@izsvenezie.it"
+  }
+  flags izsve_team
+}
+
+

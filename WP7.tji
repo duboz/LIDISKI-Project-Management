@@ -1,0 +1,48 @@
+task WP7 "WP7: Development of toolkit for disease surveillance and control"{
+
+task wp7_1 "Design Kobocollect fitting to lidiski needs"{
+    start 2020-03-07
+    end   2020-05-31
+}
+
+task wp7_2 "Testing KoboCollect on the field and producing report"{
+    start 2020-05-15
+    end   2020-07-31
+}
+task wp7_3 "Training of field scientists to kobocolect"{
+    start 2020-07-15
+    end   2020-08-31
+}
+
+task wp7_4 "Ask for a PhD supervisor/Univ and Registration of PhD in modelling/epidemiology"{
+    note "candidate = Sandra"
+    start 2020-03-07
+    end   2020-03-31
+}
+
+task wp7_5 "Read Keeling’s modelling book and contact Raphaël to tailord PhD subject"{
+    start 2020-03-07
+    end   2020-03-31
+}
+
+task wp7_6 "Start of of PhD in modelling/epidemiology"{
+    note "candidate = Sandra"
+    flags milestones
+    depends !wp7_4
+}
+
+task wp7_7 "Send ToR engineer to Ikore"{
+    end ${now}
+    flags milestones
+}
+
+task wp7_8 "Hiring a computer engineer"{
+    end %{${now} + 1m}
+    depends !wp7_7
+}
+
+task wp7_9 "Information Systeme design"{
+    scheduling alap
+}
+
+}

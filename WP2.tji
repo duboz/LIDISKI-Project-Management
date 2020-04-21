@@ -1,0 +1,104 @@
+task WP2 "WP2: Capacity building for laboratory and vaccine production"{
+
+task wp2_1 "Ibet to come to NVRI for first evaluation for vaccine production"{
+  start 2020-03-24
+  end   2020-03-31
+}
+
+task wp2_2 "Define rules of expenditures for field work with EU approval"{
+  end 2020-04-31
+}
+
+task wp2_3 "Collect data with temperature recorders (N=4) to confirm that equipment is adequate"{
+  end 2020-04-31
+}
+
+task wp2_4 "If OK buy another 10-15"{
+  start 2020-03-31
+  end   2020-04-31
+}
+
+task wp2_5 "Collect data with all recorders in plateau and Bauchi"{
+  start 2020-05-31
+  end   2020-09-31
+}
+
+task wp2_6 "Mission with consultant for solar panel"{
+  start 2020-04-30
+  end   2020-05-31
+}
+
+task wp2_7 "Tender process for solar panel"{
+  start 2020-06-30
+  end   2020-07-31
+}
+
+task wp2_8 "Install solar panel + training of NVRI staff"{
+  start 2020-07-15
+  end   2020-09-15
+}
+
+task wp2_9 "Data of outstations before solar (last 2 years)"{
+  note "Purchase of fuel - Sales of vaccines - Thermo of fridges - Number of good-quality samples received"
+  start 2020-04-31
+  end   2020-09-31
+}
+
+task wp2_10 "Choose trainees for ND"{
+  start 2020-03-15
+  end   2020-03-31
+}
+
+task wp2_11 "Collect and genotyping new samples for ND through active surveillance"{
+  start 2020-04-31
+  end   2020-09-31
+}
+
+task wp2_12 "Shipment of samples and vaccines to IZSVE"{
+note "swabs from active surveillance, organs from passive surveillance (clincal cases) together with the NDV-I2 vaccine + other live #vaccines manifactured at NVRI"
+  start 2020-10-01
+  end   2020-10-07
+}
+
+task wp2_13 "Training for ND"{
+  start 2020-11-14
+  end   2020-12-21
+}
+
+task wp2_14 "Confirm if further PPR sampling necessary in Plateau and Bauchi"{
+  start 2020-03-14
+  end   2020-03-21
+}
+
+task wp2_15 "Collect and genotyping new samples for PPR through active surveillance if necessary"{
+  start 2020-03-24
+  end   2020-04-31
+}
+
+task wp2_16 "Samples sent to CIRAD (if any)"{
+  start 2020-05-01
+  end   2020-05-07
+}
+
+task wp2_17 "Training for PPR (S.Mantip)"{
+  start 2020-05-15
+  end   2020-08-31
+}
+
+task wp2_18 "Sending publi to IZSVE"{
+note -8<-
+to check if enough info withou the need of experimental
+infection to test efficacy of current vaccine
+->8-
+  start 2020-03-15
+  end   2020-03-31
+}
+
+
+task wp2_19 "Feedback from IZSVE on publications sent by Shittu"{
+  start 2020-04-01
+  end   2020-04-31
+  depends !wp2_18
+}
+
+}

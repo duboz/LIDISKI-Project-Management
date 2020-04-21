@@ -1,0 +1,82 @@
+/*
+ * This file contains the LIDISKI project set of tasks,
+ * human ressources, costs in a suitable format for
+ * TaskJuggler project management tool.
+ */
+ 
+project EFIKO "LIDISKI"  2020-01-01 +1y {
+  # Set the default time zone for the project. If not specified, UTC
+  # is used.
+  timezone "Europe/Paris"
+  # Hide the clock time. Only show the date.
+  timeformat "%d-%m-%Y"
+  # Use US format for numbers
+  numberformat "-" "" "," "." 1
+  # Use US financial format for currency values. Don't show cents.
+  currencyformat "(" ")" "," "." 0
+  
+  # The currency for all money values is the Euro.
+  currency "EUR"
+
+  # We want to compare the baseline scenario to one with a slightly
+  # delayed start.
+  scenario plan "Plan" {
+    scenario delayed "Delayed"
+  }
+  extend resource {
+    text Phone "Phone"
+  }
+}
+
+# Copyright for this file.
+copyright "© 2020 LIDISKI Project"
+
+# The daily default rate of all resources. This can be overridden for each
+# resource. We specify this, so that we can do a good calculation of
+# the costs of the project.
+rate 390.0
+
+# Register Christmas as a global holiday for all resources.
+leaves holiday "Christmas" 2020-12-25
+flags cirad_team, ikore_team, nvri_team, izsve_team, milestones
+
+
+# In order to do a simple profit and loss analysis of the project we
+# specify accounts.
+account cost "Project cost" {
+  account cirad_account "CIRAD account"
+  account nvri_account  "NVRI account"
+  account izsve_account "IZSVe account"
+  account ikore_account "IKORE account"
+}
+account EU_Grant "Payments"
+
+# The Profit&Loss analysis should be EU_Grant - cost accounts.
+balance cost EU_Grant
+
+
+include "project_members.tji"
+
+/*
+ * Definitions of the projet packages
+ */
+
+include "WP1.tji"
+include "WP2.tji"
+include "WP3.tji"
+include "WP4.tji"
+include "WP5.tji"
+include "WP6.tji"
+include "WP7.tji"
+include "WP8.tji"
+include "WP9.tji"
+include "WP10.tji"
+include "milestones.tji"
+
+/*
+ * Web based reports
+ */
+
+include "web_based_report.tji"
+
+

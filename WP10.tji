@@ -1,0 +1,48 @@
+task WP10 "WP10: External communication"{
+
+  task wp10_1 "Website: provide partner + NAERLS description + list of staff involved with position to Ijeoma"{
+    start 2020-03-07
+    end   2020-03-31
+  }
+
+  task wp10_2 "Send description of project to Ijeoma"{
+    start 2020-03-07
+    end   2020-03-31
+  }
+
+  task wp10_3 "News on launch meeting available on website"{
+    start 2020-03-08
+    end   2020-03-14
+  }
+
+  task wp10_4 "Press release on project"{
+    start 2020-03-08
+    end   2020-03-14
+  }
+
+  task wp10_5 "News on project through website, twitter, linkdin, Ikore’s facebook"{
+    start 2020-03-08
+    end   2020-12-31
+  }
+
+  task wp10_6 "Take pictures and videos during field work, and training and send to ikore (to database at later stage)"{
+    start 2020-03-08
+    end   2020-12-31
+  }
+ 
+  task wp10_7 "Estimation of cost of video (prepare a 2min video from 20 videos of 1-2 min) sent to cooridnators"{
+    start 2020-03-08
+    end   2020-03-31
+  }
+
+  task wp10_8 "Prepare video for website and annual meeting with activities of project"{
+    start 2020-11-01
+    end   2020-12-31
+  }
+
+  task wp10_9 "Complete Whatsapp group with relevant contacts not present at meeting"{
+    start 2020-03-08
+    end   2020-03-31
+  }
+
+}

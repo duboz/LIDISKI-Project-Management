@@ -1,0 +1,56 @@
+task WP9 "WP9: Internal communication"{
+
+  task wp9_1 "send communication material to NVRI and CIRAD"{
+    note "posters/flyers on PPR symptoms, ND symptoms, vaccination + transcript radio jingle"
+    start 2020-04-01
+    end   2020-06-07
+  }
+
+  task wp9_2 "Validation of text in posters + radio jingle"{
+    start 2020-06-08
+    end   2020-06-31
+  }
+
+  task wp9_3 "Translation of text in poster + radio jingle"{
+    start 2020-07-01
+    end   2020-07-31
+  }
+  
+  task wp9_4 "Full validation of poster + radio jingle text"{
+    start 2020-08-01
+    end   2020-08-31
+  }
+
+  task wp9_5 "Print posters/flyers"{
+    start 2020-09-01
+    end   2020-09-31
+  }
+
+  task wp9_6 "First draft of booklet on surveillance sent to CIRAD, Ikore and NVRI"{
+    note "(text+ idea of design)"
+    start 2020-04-01
+    end   2020-06-31
+  }
+
+  task wp9_7 "Feedback on booklet"{
+    start 2020-07-01
+    end   2020-08-31
+  }
+
+  task wp9_8 "Final validation on content, final graphic design"{
+    start 2020-09-01
+    end   2020-09-31
+  }
+
+  task wp9_9 "Print CAHWS teaching material"{
+    start 2020-10-01
+    end   2020-11-31
+  }
+
+  task wp9_10 "Contact local chiefs and other relevant advocacy people"{
+    note "before fieldwork/training in plateau"
+    start 2020-09-01
+    end   2020-10-31
+  }
+
+}

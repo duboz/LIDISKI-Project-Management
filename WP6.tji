@@ -1,0 +1,21 @@
+task WP6 "WP6: Socio-economic context of PPR and ND"{
+
+  task wp6_1 "Design survey"{
+    note "Sampling framework Checklists + Questionnaire building Central question: perception of disease costs and vaccination costs + indivdual attitude towards vaccination"
+    start 2020-03-15
+    end   2020-09-31
+  }
+
+  task wp6_2 "Preliminary field investigation"{
+    note "Qualitative interviews with a small sample of famers"
+    start 2020-05-01
+    end   2020-06-31
+  }
+
+  task wp6_3 "Implement survey in pilot"{
+    note "Mixed approach – participatory assessment + questionnaire survey"
+    start 2020-10-01
+    end   2020-12-31
+  }
+
+}

@@ -1,0 +1,23 @@
+task WP8 "WP8: Evaluation of Strategies"{
+
+  task wp8_1 "Put data, image, video obtained in database for base line, communication"{
+    start 2020-03-01
+    end   2020-12-31
+  }
+
+  task wp8_2 "Send progress report to relevant gov agencies"{
+    start 2020-11-24
+    end   2020-11-31
+  }
+  task wp8_3 "Discuss with IZVe and NVRI of the evaluation of current vaccine"{
+    #(see WP1)
+    start 2020-03-07
+    end   2020-03-24
+  }
+
+  task wp8_4 "Evaluation of currently used ND vaccine"{
+    #(to be confirmed)
+    start ${now}
+  }
+
+}

@@ -1,0 +1,22 @@
+  task deliveries " Coordination Milestones" {
+
+    # Some milestones have customer payments associated with them. We
+    # credit these payments to the 'EU_Grant' account.
+    purge chargeset
+    chargeset EU_Grant
+
+    task start "Project start" {
+      start ${projectstart}
+
+      # At the beginning of each year, we receive a payment from EU
+      # This is credited to the account associated with this.
+      charge 2500000 onstart
+      flags milestones
+    }
+    
+    task "Send quarterly report to coordinator" {flags milestones end 2020-05-31}
+    task "Send quarterly report to coordinator" {flags milestones end 2020-08-31}
+    task "Send quarterly report to coordinator" {flags milestones end 2020-11-31}
+      
+    flags milestones
+ }

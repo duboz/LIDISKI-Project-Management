@@ -1,0 +1,66 @@
+task WP1 "WP1 Identify study areas and training needs" {
+    # WP leaders
+    responsible Arnaud, Raphael, Bashir
+    start ${projectstart}
+    task wp1_1 "Ask CVO for monthly disease and vaccination report data at LGO level for plateau + Bauchi" {
+      start 2020-03-01
+      end   2020-03-31
+      allocate Arnaud, Raphael, Bashir
+      journalentry 2020-04-16 "Reports are not still sent" {
+        author Raphael
+        alert yellow
+        summary -8<-
+          After two recalling by emails, we have no answer from the FMARD.
+        ->8-
+        details -8<-
+          We have already contacted the FMARD. What can be the next step?
+        ->8-
+      }
+    }
+
+    task wp1_2 "Ask CVO for demo SM and poultry at LGO level for plateau + Bauchi" {
+      start 2020-03-01
+      end   2020-03-31
+      allocate Arnaud, Raphael, Bashir
+        journalentry 2020-04-16 "Reports are not still sent" {
+        author Raphael
+        alert yellow
+        summary -8<-
+          Where are we in this task?
+        ->8-
+      }
+    }
+
+    task wp1_3 "Provide feedback on FAO docs sent by Shittu" {
+      start 2020-03-01
+      end   2020-03-31
+      allocate Marion, Alice, Paolo
+    }
+ 
+    task wp1_4  "Ask T Bidoli/BoS (Felicia Ofor) data on socio-eco at LGO level for plateau + Bauchi"{
+      start 2020-03-01
+      end   2020-03-15
+      allocate Marion, Alice
+    }
+    task wp1_5  "Provide feedback on IZSVE data requirement"{
+      start 2020-03-01
+      end   2020-03-31
+      allocate Marion, Alice
+    }
+    task wp1_6 "Provide report on surveillance system"{
+      start 2020-03-01
+      end   2020-03-31
+      allocate Marion, Alice
+    }
+    task wp1_7 "Contact solar panel consultants to know the cost (based on NVRI, Ikore, EU contacts)"{
+      start 2020-03-01
+      end   2020-03-31
+      allocate Marion, Alice
+    }
+    task wp1_8 "Start looking at data obtained (monthly report, demo,socio) to clean before training"{
+      start 2020-04-01
+      end   2020-04-30
+      allocate Marion, Alice
+    }
+}
+
