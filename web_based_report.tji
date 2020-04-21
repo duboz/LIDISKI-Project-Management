@@ -323,8 +323,8 @@ resourcereport contactList "" {
   scenarios delayed
   headline "Contact list and duty plan"
   columns name,
-          email { celltext 1 "[mailto:<-email-> <-email->]" },
-          Phone,
+          #email { celltext 1 "[mailto:<-email-> <-email->]" },
+          #Phone,
           managers { title "Manager" },
           chart { scale day }
   hideresource ~isleaf()
