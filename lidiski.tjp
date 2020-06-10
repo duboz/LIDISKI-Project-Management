@@ -3,8 +3,8 @@
  * human ressources, costs in a suitable format for
  * TaskJuggler project management tool.
  */
- 
-project EFIKO "LIDISKI"  2020-01-01 +1y {
+
+project EFIKO "LIDISKI"  2020-01-02 +1y {
   # Set the default time zone for the project. If not specified, UTC
   # is used.
   timezone "Europe/Paris"
@@ -14,7 +14,7 @@ project EFIKO "LIDISKI"  2020-01-01 +1y {
   numberformat "-" "" "," "." 1
   # Use US financial format for currency values. Don't show cents.
   currencyformat "(" ")" "," "." 0
-  
+
   # The currency for all money values is the Euro.
   currency "EUR"
 
@@ -25,6 +25,7 @@ project EFIKO "LIDISKI"  2020-01-01 +1y {
   }
   extend resource {
     text Phone "Phone"
+    text Institute "Institute"
   }
 }
 
@@ -38,7 +39,7 @@ rate 390.0
 
 # Register Christmas as a global holiday for all resources.
 leaves holiday "Christmas" 2020-12-25
-flags cirad_team, ikore_team, nvri_team, izsve_team, milestones
+flags cirad_team, ikore_team, nvri_team, izsve_team, naerls_team, milestones
 
 
 # In order to do a simple profit and loss analysis of the project we
@@ -60,6 +61,18 @@ include "project_members.tji"
 /*
  * Definitions of the projet packages
  */
+
+macro ongoing [
+  %{${now} + 1d}
+]
+
+macro checktask [
+  journalentry ${now} "Check Task"{
+    author Raphael
+    alert  yellow
+    summary "This task needs information on its status."
+  }
+]
 
 include "WP1.tji"
 include "WP2.tji"

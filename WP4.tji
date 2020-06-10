@@ -1,50 +1,63 @@
+/*
+ * WP4 Task Juggler Definition
+ */
+
 task WP4 "WP4: Training in quantitative and participatory methods"{
 
   task wp4_1 "NVRI send to CIRAD 1 page CV of participants to training in stats and sampling design"{
     note "10 participants, including 2 of federal vet services"
     start 2020-04-01
     end   2020-04-07
+    responsible Mohammad
   }
   task wp4_2 "Training in statistics"{
    start 2020-05-01
    end   2020-05-15
+   responsible Mohammad, Vladimir
  }
 
   task wp4_3 "Training in sampling design"{
    start 2020-05-16
    end   2020-05-31
+   responsible Mohammad, Vladimir
  }
 
   task wp4_4 "NVRI send to CIRAD 1 page CV of participants"{
     note "to (i) training in risk mapping (8 participants, including 2 of federal vet services) ; (ii) to training in participatory methods"
     start 2020-08-01
     end   2020-08-31
+    responsible Ijeoma, Mohammad
   }
-  
+
   task wp4_5 "Basic preliminary training in QGIS"{
     start 2020-06-01
     end   2020-09-15
+    responsible Mohammad
   }
-  
+
   task wp4_6 "Training in risk mapping"{
     start 2020-09-16
-    end   2020-09-23  
+    end   2020-09-23
+    responsible Cecile, Ijeoma, Mohammad
   }
 
   task wp4_7 "Training in participatory methods"{
     start 2020-09-24
-    end   2020-09-31  
+    end   2020-09-31
+    responsible nvri, Alexis, Raphael, Arnaud
   }
-  
+
   task wp4_8 "NVRI and ABU send to CIRAD 1 page CV of participants"{
     note "to (i) training in socio-economics (including 2 candidate Msc students from NVRI and 2 Msc students from ABU)"
     start 2020-05-24
     end   2020-05-31
+    responsible Thomas
   }
- 
+
   task wp4_9 "Training in socio-economics"{
     start 2020-09-24
     end   2020-09-31
+    responsible Alexis, Abdrahmane, Thomas
   }
-  
+
 }

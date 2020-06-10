@@ -1,7 +1,7 @@
 /*
  * Definitions of the projet packages
  */
- 
+
 navigator navbar {
   hidereport @none
 }
@@ -118,11 +118,7 @@ textreport frame "" {
     title "Contact List"
     center '<[report id="contactList"]>'
   }
-  textreport "ResourceGraph" {
-    formats html
-    title "Resource Graph"
-    center '<[report id="resourceGraph"]>'
-  }
+  
 }
 
 # A traditional Gantt chart with a project overview.
@@ -130,7 +126,10 @@ taskreport overview "" {
   header -8<-
     === Original Project Plan - 10 Work Packages ===
   ->8-
-  columns name {width 400}, start, end, chart { ${TaskTip} }
+  columns name {width 400}, start, end,
+          responsible {listtype bullets
+                       listitem "<-query attribute='name'->"},
+          chart { ${TaskTip} scale month}
   timeformat "%Y-%m-%d"
   loadunit months
   hideresource @all
@@ -138,104 +137,133 @@ taskreport overview "" {
   rolluptask @all
 
   footer -8<-
-    === Staffing ===
-
-    All project phases are properly staffed. See [[ResourceGraph]] for
-    detailed resource allocations.
-
     === Current Status ===
 
-    The project started off with a delay of 1 days. This slightly affected
-    the original schedule. See [[Deliveries]] for the impact on the
-    delivery dates.
+    The project has been delayed due to COVID-19 crisis.
+    See [[Deliveries]] for the impact on the delivery dates.
+
+    === Coordination ===
+
+    '''Project Coordinators:''' Arnaud Bataille and Raphaël Duboz
+    ([mailto:arnaud.bataille@cirad.fr;raphae.duboz@cirad.fr contact])
+    
+    '''Coordination Team:''' Arnaud Bataille, Raphaël Duboz, Timothy Yusufu Woma, Ismail Shittu, Reuben A Ocholi
+    ([mailto:arnaud.bataille@cirad.fr;raphael.duboz@cirad.fr;womaty@gmail.com;shismailus@yahoo.com;rbocholi@yahoo.com contact])
+    
+    '''Administrative Team:''' Nadège Souprayanmestry, R. Testolin, Gbenga Ariyo, Ijeoma Ohuruogu, Dauda Shok, Seun S Oyetunde ([mailto:nadege.souprayenmestry@cirad.fr;rtestolin@izsvenezie.it;dierk.ariyo@gmail.com;gbenga@ikore.org;ijeoma@ikore.org;ijeoma.nnorom@gmail.com;daudashok@yahoo.com;seunhaspounds@gmail.com contact])
   ->8-
 }
 
-# Macro to set the background color of a cell according to the alert
-# level of the task.
-macro AlertColor [
-  cellcolor plan.alert = 0 "#00D000" # green
-  cellcolor plan.alert = 1 "#D0D000" # yellow
-  cellcolor plan.alert = 2 "#D00000" # red
-]
+  # Macro to set the background color of a cell according to the alert
+  # level of the task.
+  macro AlertColor [
+    cellcolor plan.alert = 0 "#00D000" # green
+    cellcolor plan.alert = 1 "#D0D000" # yellow
+    cellcolor plan.alert = 2 "#D00000" # red
+  ]
 
-taskreport status "" {
-  columns bsi { width 50 title 'WBS' }, name { width 150 },
-          start { width 100 }, end { width 100 },
-          effort { width 100 },
-          alert { tooltip plan.journal
-                          != '' "<-query attribute='journal'->" width 150 },
-          status { width 150 }
-  scenarios delayed
+  taskreport status "" {
+    columns # bsi { width 50 title 'WBS' },
+            name { width 150 },
+            start { width 100 }, end { width 100 },
+            #effort { width 100 },
+            alert { tooltip plan.journal
+                            != '' "<-query attribute='journal'->" width 150 },
+            status { width 150 }
+    scenarios plan
 
-  taskreport dashboard "" {
-    headline "Project Dashboard (<-query attribute='now'->)"
-    columns name { title "Task" ${AlertColor} width 200},
-            resources { width 200 ${AlertColor}
-                        listtype bullets
-                        listitem "<-query attribute='name'->"
-                        start ${projectstart} end ${projectend} },
-            alerttrend { title "Trend" ${AlertColor} width 50 },
-            journal { width 350 ${AlertColor} }
-    journalmode status_up
-    journalattributes headline, author, date, summary, details
-    hidetask ~hasalert(0)
-    sorttasks alert.down, delayed.end.up
-    period %{${now} - 1w} +1w
+    taskreport dashboard "" {
+      headline "Project Dashboard (<-query attribute='now'->)"
+      columns name { title "Task" ${AlertColor} width 200},
+              responsible {width 200 ${AlertColor}
+                          listtype bullets
+                          listitem "<-query attribute='name' ->"
+                          start ${projectstart} end ${projectend} },
+              alerttrend { title "Trend" ${AlertColor} width 50 },
+              journal { width 350 ${AlertColor} },
+              start { width 100 ${AlertColor}}, end { width 100 ${AlertColor}}
+      journalmode status_up
+      journalattributes headline, author, date, summary, details
+      hidetask ~hasalert(0)
+      sorttasks alert.down, end.up
+      period %{${now} - 1w} +1w
+    }
+    taskreport completed "" {
+      headline "Already completed tasks"
+      hidetask plan.end >= ${now}
+    }
+    taskreport ongoing "" {
+      headline "Ongoing tasks"
+      hidetask ~((plan.start <= ${now}) & (plan.end > ${now}))
+    }
+    taskreport future "" {
+      headline "Future tasks"
+      hidetask ~(plan.start > ${now})
+    }
   }
-  taskreport completed "" {
-    headline "Already completed tasks"
-    hidetask ~(delayed.end <= ${now})
+
+/*
+ * One report by Work-Pakages
+ */
+
+  taskreport WP1 "" {
+    scenarios plan
+    headline "WP1"
+    caption -8<-
+    * Coordinators : Arnaud Bataille, Raphaël Duboz, Reuben Ocholi
+    * Mail to: [mailto:arnaud.bataille@cirad.fr;raphael.duboz@cirad.fr;rbocholi@yahoo.com Coordinators WP1]
+       ->8-
+    columns name, start, end,
+            responsible {width 100 listtype bullets},
+            chart { ${TaskTip_Detailed} scale day width 500 }
+    taskroot WP1
+    timeformat "%Y-%m-%d"
+    hideresource ~(isleaf() & isleaf_())
+    sortresources name.up
   }
-  taskreport ongoing "" {
-    headline "Ongoing tasks"
-    hidetask ~((delayed.start <= ${now}) & (delayed.end > ${now}))
+
+  taskreport WP2 "" {
+    scenarios plan
+    headline "WP2"
+    caption -8<-
+    * Coordinators : Arnaud Bataille, Francesco Bonfante, Alice Bianco, Shitu Ismail, Reuben Ocholi
+    * Mail to: [mailto:arnaud.bataille@cirad.fr;fbonfente@izsvenezie.it;abianco@izsvenezie.it;shismailus@yahoo.com;rbocholi@yahoo.com Coordinators WP2]
+       ->8-
+    columns name, start, end,
+            responsible {width 100 listtype bullets},
+            chart { ${TaskTip_Detailed} scale day width 500 }
+    taskroot WP2
+    timeformat "%Y-%m-%d"
+    hideresource ~(isleaf() & isleaf_())
+    sortresources name.up
   }
-  taskreport future "" {
-    headline "Future tasks"
-    hidetask ~(delayed.start > ${now})
+
+  taskreport WP3 "" {
+    scenarios plan
+    headline "WP3"
+    caption -8<-
+    * Coordinators : Marion Bordier, Gbenga Ariyo
+    * Mail to: [mailto:marion.bordier@cirad.fr;gbenga@gmail.com;dierk.ariyo@gmail.com Coordinators WP3]
+       ->8-
+    columns name, start, end,
+            responsible {width 100 listtype bullets},
+            duration, chart { ${TaskTip_Detailed} scale day width 500 }
+    taskroot WP3
+    timeformat "%Y-%m-%d"
+    hideresource ~(isleaf() & isleaf_())
+    sortresources name.up
   }
-}
 
-# A list of tasks showing the resources assigned to each task.
-taskreport WP1 "" {
-  scenarios delayed
-  headline "WP1 - Details and Resource Allocation Report"
-  columns bsi { title 'WBS' }, name, start, end, effort { title "Work" },
-          duration, chart { ${TaskTip_Detailed} scale day width 500 }
-  taskroot WP1
-  timeformat "%Y-%m-%d"
-  hideresource ~(isleaf() & isleaf_())
-  sortresources name.up
-}
-
-taskreport WP2 "" {
-  scenarios delayed
-  headline "WP2 - Details and Resource Allocation Report"
-  columns bsi { title 'WBS' }, name, start, end, effort { title "Work" },
-          duration, chart { ${TaskTip_Detailed} scale day width 500 }
-  taskroot WP2
-  timeformat "%Y-%m-%d"
-  hideresource ~(isleaf() & isleaf_())
-  sortresources name.up
-}
-
-taskreport WP3 "" {
-  scenarios delayed
-  headline "WP3 - Details and Resource Allocation Report"
-  columns bsi { title 'WBS' }, name, start, end, effort { title "Work" },
-          duration, chart { ${TaskTip_Detailed} scale day width 500 }
-  taskroot WP3
-  timeformat "%Y-%m-%d"
-  hideresource ~(isleaf() & isleaf_())
-  sortresources name.up
-}
-
-taskreport WP4 "" {
-  scenarios delayed
-  headline "WP4 - Details and Resource Allocation Report"
-  columns bsi { title 'WBS' }, name, start, end, effort { title "Work" },
-          duration, chart { ${TaskTip_Detailed} scale day width 500 }
+  taskreport WP4 "" {
+    scenarios plan
+    headline "WP4"
+    caption -8<-
+    * Coordinators : Alexis Delabouglisse, Vladimir Grosbois, Mohammad B. Bolajoko, Isioma Rapu Ifende
+    * Mail to: [mailto:alexis.delabouglisse@cirad.fr;vladimir.grosbois@cirad.fr;mbbolajoko@gmail.com;isioma_rapu@yahoo.com Coordinators WP4]
+       ->8-
+    columns name, start, end,
+            responsible {width 100 listtype bullets},
+            duration, chart { ${TaskTip_Detailed} scale day width 500 }
   taskroot WP4
   timeformat "%Y-%m-%d"
   hideresource ~(isleaf() & isleaf_())
@@ -243,9 +271,14 @@ taskreport WP4 "" {
 }
 
 taskreport WP5 "" {
-  scenarios delayed
-  headline "WP5 - Details and Resource Allocation Report"
-  columns bsi { title 'WBS' }, name, start, end, effort { title "Work" },
+  scenarios plan
+  headline "WP5"
+  caption -8<-
+    * Coordinators : Marion Bordier, Francesco Lamacchia, P. Mulatti, Shitu Ismail, Timothy Yusufu Woma, Mohammad B. Bolajoko
+    * Mail to [mailto:marion.bordier@cirad.fr;Fscolamacchia@izsvenezie.it;pmulatti@izsvenezie.it;shismailus@yahoo.com;womaty@gmail.com;mbbolajoko@gmail.com Coordinators WP5]
+       ->8-
+  columns name, start, end,
+          responsible {width 100 listtype bullets},
           duration, chart { ${TaskTip_Detailed} scale day width 500 }
   taskroot WP5
   timeformat "%Y-%m-%d"
@@ -254,9 +287,14 @@ taskreport WP5 "" {
 }
 
 taskreport WP6 "" {
-  scenarios delayed
-  headline "WP6 - Details and Resource Allocation Report"
-  columns bsi { title 'WBS' }, name, start, end, effort { title "Work" },
+  scenarios plan
+  headline "WP6"
+  caption -8<-
+    * Coordinators : Alexis Delabouglisse, Thomas Duniya
+    * Mail to: [mailto:alexis.delabouglisse@cirad.fr;bidolitd@yahoo.com;bidolitd@gmail.com;tdbidoli@abu.edu.ng Coordinators WP6]
+       ->8-
+  columns name, start, end,
+          responsible {width 100 listtype bullets},
           duration, chart { ${TaskTip_Detailed} scale day width 500 }
   taskroot WP6
   timeformat "%Y-%m-%d"
@@ -265,9 +303,14 @@ taskreport WP6 "" {
 }
 
 taskreport WP7 "" {
-  scenarios delayed
-  headline "WP7 - Details and Resource Allocation Report"
-  columns bsi { title 'WBS' }, name, start, end, effort { title "Work" },
+  scenarios plan
+  headline "WP7"
+  caption -8<-
+    * Coordinators : Raphaël Duboz, Mohammad B. Bolajoko
+    * Mail to: [mailto:raphael.duboz@cirad.fr;mbbolajoko@gmail.com Coordinators WP7]
+       ->8-
+  columns name, start, end,
+          responsible {width 100 listtype bullets},
           duration, chart { ${TaskTip_Detailed} scale day width 500 }
   taskroot WP7
   timeformat "%Y-%m-%d"
@@ -276,9 +319,14 @@ taskreport WP7 "" {
 }
 
 taskreport WP8 "" {
-  scenarios delayed
-  headline "WP8 - Details and Resource Allocation Report"
-  columns bsi { title 'WBS' }, name, start, end, effort { title "Work" },
+  scenarios plan
+  headline "WP8"
+  caption -8<-
+    * Coordinators : Raphaël Duboz, Mohammad B. Bolajoko
+    * Mail to: [mailto:raphael.duboz@cirad.fr;mbbolajoko@gmail.com Coordinators WP8]
+       ->8-
+  columns name, start, end,
+          responsible {width 100 listtype bullets},
           duration, chart { ${TaskTip_Detailed} scale day width 500 }
   taskroot WP8
   timeformat "%Y-%m-%d"
@@ -287,9 +335,14 @@ taskreport WP8 "" {
 }
 
 taskreport WP9 "" {
-  scenarios delayed
-  headline "WP9 - Details and Resource Allocation Report"
-  columns bsi { title 'WBS' }, name, start, end, effort { title "Work" },
+  scenarios plan
+  headline "WP9"
+  caption -8<-
+    * Coordinators : Ijeoma Ohuruogu, Claudio  Mantovani, Isioma Rapu Ifende
+    * Mail to: [mailto:ijeoma@ikore.org;cmantovani@izsvenezie.it;isioma_rapu@yahoo.com Coordinators WP9]
+       ->8-
+  columns name, start, end, effort { title "Work" },
+          responsible {width 100 listtype bullets},
           duration, chart { ${TaskTip_Detailed} scale day width 500 }
   taskroot WP9
   timeformat "%Y-%m-%d"
@@ -298,16 +351,20 @@ taskreport WP9 "" {
 }
 
 taskreport WP10 "" {
-  scenarios delayed
-  headline "WP10 - Details and Resource Allocation Report"
-  columns bsi { title 'WBS' }, name, start, end, effort { title "Work" },
+  scenarios plan
+  headline "WP10"
+  caption -8<-
+    * Coordinators : Ijeoma Ohuruogu, TBD
+    * Mail to: [mailto:ijeoma@ikore.org Coordinators WP10]
+       ->8-
+  columns name, start, end,
+          responsible {width 100 listtype bullets},
           duration, chart { ${TaskTip_Detailed} scale day width 500 }
   taskroot WP10
   timeformat "%Y-%m-%d"
   hideresource ~(isleaf() & isleaf_())
   sortresources name.up
 }
-
 
 # A list of all tasks with the percentage completed for each task
 taskreport deliveries "" {
@@ -318,29 +375,16 @@ taskreport deliveries "" {
   hideresource @all
   scenarios plan #, delayed
 }
+
 # A list of all employees with their contact details.
 resourcereport contactList "" {
-  scenarios delayed
+  scenarios plan
   headline "Contact list and duty plan"
   columns name,
-          #email { celltext 1 "[mailto:<-email-> <-email->]" },
-          #Phone,
-          managers { title "Manager" },
-          chart { scale day }
+          email { celltext 1 "[mailto:<-email-> <-email->]" },
+          Institute
   hideresource ~isleaf()
   sortresources name.up
   hidetask @all
-}
-
-# A graph showing resource allocation. It identifies whether each
-# resource is under- or over-allocated for.
-resourcereport resourceGraph "" {
-  scenarios delayed
-  headline "Resource Allocation Graph"
-  columns no, name, effort, rate, weekly { ${TaskTip} }
-  loadunit shortauto
-  # We only like to show leaf tasks for leaf resources.
-  hidetask ~(isleaf() & isleaf_())
-  sorttasks plan.start.up
 }
 

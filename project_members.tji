@@ -2,7 +2,7 @@
  *  Human ressources involved in the project
  */
 
-/* 
+/*
  *  CIRAD
  */
 
@@ -11,73 +11,226 @@ resource cirad "CIRAD" {
     resource Arnaud "Arnaud Bataille" {
       email "arnaud.bataille@cirad.fr"
       rate 480
+      Institute "CIRAD"
     }
     resource Raphael "Raphaël Duboz" {
       email "raphael.duboz@cirad.fr"
       Phone "+33(0)664938198"
       rate 480
+      Institute "CIRAD"
     }
   }
-  
+
   resource Marion "Marion Bordier" {
     email "marion.bordier@cirad.fr"
-    rate 350.0
+    rate 480
+    Institute "CIRAD"
   }
   resource Alexis "Alexis Delabouglisse" {
     email "alexis.delabouglisse@cirad.fr"
+    Institute "CIRAD"
   }
   resource Tancrede "Tancrède Voituriez" {
     email "tancrede.voituriez@cirad.fr"
+    rate 480
+    Institute "CIRAD"
   }
-  
+
+  resource Vladimir "Vladimir Grosbois" {
+    email "vladimir.grosbois@cirad.fr"
+    rate 480
+    Institute "CIRAD"
+  }
+  resource David_Chav "David Chavarnac" {
+    email "tancrede.voituriez@cirad.fr"
+    rate 480
+    Institute "CIRAD"
+  }
+  resource Abdrahmane "Abdrahmane Wan" {
+    email "abdrahmane.wane@cirad.fr"
+    Institute "CIRAD"
+    rate 480
+  }
+  resource Andrea "Andréa Apolloni"{
+    email "andrea.apolloni@cirad.fr"
+    Institute "CIRAD"
+  }
+
+  resource Nadege "Nadège Souprayanmestry"{
+    email "nadege.souprayenmestry@cirad.fr"
+    Institute "CIRAD"
+  }
+
+  resource Cecile "Cécile Squarzoni"{
+    email "cecile.squarzoni@cirad.fr"
+    Institute "CIRAD"
+  }
+
   flags cirad_team
 }
 
-/* 
+/*
  *  NVRI
  */
 
 resource nvri "NVRI" {
-  resource Bashir "Bashir" {
-    email "bashir@gmail.com"
-    Phone "x666"
+
+  resource Reuben "Rueben Ocholi"{
+    email "rbocholi@yahoo.com"
+    Institute "NVRI"
+  }
+
+  resource Bashir "Bashir Muhammad Bolajoko" {
+    email "mbbolajoko@gmail.com; bolajokomb@gmail.com"
+    Phone "+234 (0) 909 862 4092"
     rate 310.0
+    Institute "NVRI"
   }
-  resource Shitu "Shitu" {
-    email "Shitu@gmail.com"
+
+  resource Shitu "Shitu Ismail" {
+    email "shismailus@yahoo.com"
     rate 300.0
+    Institute "NVRI"
   }
+
+  resource Woma "Woma TimothyYusufu"{
+    email "womaty@gmail.com"
+    Institute "NVRI"
+  }
+
+  resource Joanis "Joannis Tony"{
+    email "tmjoannis@yahoo.com"
+    Institute "NVRI"
+  }
+  resource Dauda "Dauda Bwala"{
+    email "dgbwala@gmail.com"
+    Institute "NVRI"
+  }
+  resource Timothy "Timothy Yusufu Woma"{
+    email "womaty@gmail.com"
+    Institute "NVRI"
+  }
+
+  resource David "David Shamaki"{
+    email "dshamaki@yahoo.com"
+    Institute "NVRI"
+  }
+
+  resource Mohammad "Mohammad B. Bolajoko"{
+    email "mbbolajoko@gmail.com"
+    Institute "NVRI"
+  }
+
+  resource Samuel "Samuel Mantip"{
+    email "samuelmantip5@gmail.com"
+    Institute "NVRI"
+  }
+
+  resource Sandra "Sandra Ijoma"{
+    email"sandraijomaifeoma@gmail.com"
+    Institute "NVRI"
+  }
+
   flags nvri_team
 }
 
-/* 
+/*
  *  IKORE
  */
 
 resource ikore "IKORE" {
-  resource Gbenga "Gbenga" {
-    email "gbenga@gmail.com"
+
+  resource Gbenga "Gbenga Ariyo" {
+    email "gbenga@gmail.com; dierk.ariyo@gmail.com"
     rate 310.0
+    Institute "IKORE"
   }
-  resource Constance "Constance" {
-    email "u@gmail.com"
-    rate 300.0
+
+  resource Constance "Constance Jumbo" {
+    email "constance.jumbo@gmail.com"
+    Institute "IKORE"
   }
+
+  resource Isioma "Isioma Rapu Ifende"{
+    email "isioma_rapu@yahoo.com"
+    Institute "IKORE"
+  }
+
+  resource Ijeoma "Ijeoma Ohuruogu"{
+    email "ijeoma@ikore.org"
+    Institute "IKORE"
+  }
+
+  resource Ovo "Ovo Ugbebor"{
+    email "ovougbebor@gmail.com"
+    Institute "IKORE"
+  }
+
+  resource Godson "Godson Ohuruogu"{
+    email "godson@ikore.org"
+    Institute "IKORE"
+  }
+
   flags ikore_team
 }
 
-/* 
+/*
  *  IZSVe
  */
 
 resource izsve "IZSVe" {
+
   resource Alice "Alice Bianco" {
      email "ABianco@izsvenezie.it"
+     Institute "IZSVe"
   }
+
   resource Paolo "Paolo Lulatti" {
      email "pmulatti@izsvenezie.it"
+     Institute "IZSVe"
+  }
+
+  resource FrancescoB "Francesco Bonfante"{
+    email "FBonfante@izsvenezie.it"
+    Institute "IZSVe"
+  }
+
+  resource FrancescoL "Francesco Lamacchia"{
+  /* NOT SURE ABOUT THE NAME */
+    email "Fscolamacchia@izsvenezie.it"
+    Institute "IZSVe"
+  }
+
+  resource Claudio "Claudio Mantovani"{
+    email "cmantovani@izsvenezie.it"
+    Institute "IZSVe"
+  }
+
+  resource R_testolin "R. Testolin"{
+    email "rtestolin@ izsvenezie.it"
+    Institute "IZSVe"
+  }
+
+  resource P_Mulatti "P Mulatti"{
+    email "pmulatti@izsvenezie.it"
+    Institute "IZSVe"
   }
   flags izsve_team
 }
+
+/*
+ *  NAERLS
+ */
+
+resource naerls "NAERLS"{
+  resource Thomas "Thomas Duniya"{
+    email "bidolitd@yahoo.com; bidolitd@gmail.com; tdbidoli@abu.edu.ng"
+    Phone "+234 803 284 6023; +234 818 487 5655"
+    Institute "NAERLS"
+  }
+  flags naerls_team
+}
+
+resource TBD "To Be Defined"
 
 

@@ -1,48 +1,71 @@
+/*
+ * WP7 Task Juggler Definition
+ */
+
 task WP7 "WP7: Development of toolkit for disease surveillance and control"{
 
-task wp7_1 "Design Kobocollect fitting to lidiski needs"{
+  task t1 "Design Kobocollect fitting to lidiski needs"{
     start 2020-03-07
     end   2020-05-31
-}
+    responsible Raphael, David_Chav, Gbenga, Bashir
+  }
 
-task wp7_2 "Testing KoboCollect on the field and producing report"{
+  task t2 "Testing KoboCollect on the field and producing report"{
     start 2020-05-15
     end   2020-07-31
-}
-task wp7_3 "Training of field scientists to kobocolect"{
+    responsible Bashir, Sandra
+  }
+
+  task t3 "Training of field scientists to kobocolect"{
     start 2020-07-15
     end   2020-08-31
-}
+    responsible Gbenga
+  }
 
-task wp7_4 "Ask for a PhD supervisor/Univ and Registration of PhD in modelling/epidemiology"{
+  task t4 "Ask for a PhD supervisor/Univ and Registration of PhD in modelling/epidemiology"{
     note "candidate = Sandra"
     start 2020-03-07
     end   2020-03-31
-}
+    responsible Bashir, Sandra
+  }
 
-task wp7_5 "Read Keeling’s modelling book and contact Raphaël to tailord PhD subject"{
+  task t5 "Read Keeling’s modelling book and contact Raphaël to tailord PhD subject"{
     start 2020-03-07
     end   2020-03-31
-}
+    responsible Sandra
+  }
 
-task wp7_6 "Start of of PhD in modelling/epidemiology"{
+  task t6 "Start of PhD in modelling/epidemiology"{
     note "candidate = Sandra"
     flags milestones
-    depends !wp7_4
-}
+    depends !t4
+    responsible Raphael, Andrea, Sandra
+  }
 
-task wp7_7 "Send ToR engineer to Ikore"{
-    end ${now}
+  task t7 "Prepare ToR engineer to Ikore"{
+    start ${now}
+    end   %{${now} + 2d}
+    responsible Raphael
+  }
+
+
+  task t7_delivery "Send ToR engineer to Ikore"{
+    responsible Raphael
     flags milestones
-}
+    depends !t7
+  }
 
-task wp7_8 "Hiring a computer engineer"{
+  task t8 "Hiring a computer engineer"{
     end %{${now} + 1m}
-    depends !wp7_7
-}
+    depends !t7
+    responsible Raphael, Isioma
+  }
 
-task wp7_9 "Information Systeme design"{
-    scheduling alap
-}
+  task t9 "Information Systeme design"{
+    scheduling asap
+    duration 4m
+    depends !t8
+    responsible David_Chav, Raphael
+  }
 
 }

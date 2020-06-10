@@ -1,14 +1,17 @@
-task WP1 "WP1 Identify study areas and training needs" {
-    # WP leaders
-    responsible Arnaud, Raphael, Bashir
-    start ${projectstart}
-    task wp1_1 "Ask CVO for monthly disease and vaccination report data at LGO level for plateau + Bauchi" {
+/*
+ * WP1 Task Juggler Definition
+ */
+
+task WP1 "WP1: Identify study areas and training needs"{
+
+    task t1 "Ask CVO for Monthly disease and vaccination reports"{
       start 2020-03-01
-      end   2020-03-31
-      allocate Arnaud, Raphael, Bashir
-      journalentry 2020-04-16 "Reports are not still sent" {
+      end 2020-03-31
+      responsible Raphael, Arnaud
+      note "Data requiered at LGO level for the states of Plateau and Bauchi"
+      journalentry 2020-05-13 "Reports are not still sent"{
         author Raphael
-        alert yellow
+        alert red
         summary -8<-
           After two recalling by emails, we have no answer from the FMARD.
         ->8-
@@ -18,49 +21,90 @@ task WP1 "WP1 Identify study areas and training needs" {
       }
     }
 
-    task wp1_2 "Ask CVO for demo SM and poultry at LGO level for plateau + Bauchi" {
+    task t1_delivery "Monthly disease and vaccination reports have been sent"{
+      depends !t1
+      note "Data requiered at LGO level for the states of Plateau and Bauchi"
+      flags milestones
+    }
+
+    task t2 "Ask CVO for demography Small Ruminant and Poultry"{
       start 2020-03-01
-      end   2020-03-31
-      allocate Arnaud, Raphael, Bashir
-        journalentry 2020-04-16 "Reports are not still sent" {
+      end 2020-03-31
+      responsible Arnaud, Raphael
+      note "At LGO level for the states of Plateau and Bauchi"
+      journalentry 2020-04-16 "Reports are not still sent"{
         author Raphael
-        alert yellow
+        alert red
         summary -8<-
           Where are we in this task?
         ->8-
       }
     }
 
-    task wp1_3 "Provide feedback on FAO docs sent by Shittu" {
+    task t2_delivery "Demography Small Ruminant and poultry have been sent"{
+      depends !t2
+      note "At LGO level for the states of Plateau and Bauchi"
+      flags milestones
+    }
+
+    task t3 "Provide feedback on FAO docs sent by Shittu"{
       start 2020-03-01
       end   2020-03-31
-      allocate Marion, Alice, Paolo
+      ${checktask}
+      responsible Marion, Alice, Paolo
     }
- 
-    task wp1_4  "Ask T Bidoli/BoS (Felicia Ofor) data on socio-eco at LGO level for plateau + Bauchi"{
-      start 2020-03-01
-      end   2020-03-15
-      allocate Marion, Alice
-    }
-    task wp1_5  "Provide feedback on IZSVE data requirement"{
+
+    task t4  "Ask T Bidoli/BoS (Felicia Ofor) data on socio-eco"{
       start 2020-03-01
       end   2020-03-31
-      allocate Marion, Alice
+      ${checktask}
+      responsible Alexis
+      note  "At LGO level for plateau + Bauchi"
     }
-    task wp1_6 "Provide report on surveillance system"{
+
+    task t5  "Provide feedback on IZSVE data requirement"{
+      start 2020-03-01
+      end   2020-03-03
+      ${checktask}
+      responsible Shitu
+    }
+
+    task t6 "Prepare report on surveillance system"{
+      start 2020-03-01
+      end   2020-04-16
+      complete 100
+      responsible Marion
+    }
+
+    task t6_delivery "Send report on surveillance system"{
+      depends !t6
+      flags milestones
+    }
+
+    task t7 "Contact solar panel consultants to know the cost"{
       start 2020-03-01
       end   2020-03-31
-      allocate Marion, Alice
+      ${checktask}
+      responsible Ijeoma, Dauda, Tancrede
+      note "Based on NVRI, Ikore, EU contacts"
     }
-    task wp1_7 "Contact solar panel consultants to know the cost (based on NVRI, Ikore, EU contacts)"{
-      start 2020-03-01
-      end   2020-03-31
-      allocate Marion, Alice
+
+    task t7_delivery "Solar panel consultants rovide costs"{
+      depends !t7
+      flags milestones
     }
-    task wp1_8 "Start looking at data obtained (monthly report, demo,socio) to clean before training"{
-      start 2020-04-01
-      end   2020-04-30
-      allocate Marion, Alice
+
+    task t8 "Start looking at data obtained (monthly report, demo,socio) to clean before training"{
+      depends !t4
+      end   %{${now} + 1m}
+      ${checktask}
+      responsible Vladimir, Alexis, Bashir
+    }
+
+    task t0 "Baseline mission in Abuja"{
+      start 2020-01-24
+      end   2020-02-06
+      responsible cirad, ikore, nvri
     }
 }
 

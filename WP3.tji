@@ -1,26 +1,34 @@
+/*
+ * WP3 Task Juggler Definition
+ */
+
 task WP3 "WP3: Capacity building of field actors in disease surveillance and control good practices"{
 
   task wp3_1 "Engagement with VCN"{
      note "check possibilities to integrate some modules to meet Lidiski outputs (and may be using Lidiski experience to update curriculum in the coming time)"
      start 2020-05-01
      end   2020-08-31
+     responsible ikore
   }
-  
+
   task wp3_2 "Engagement with VCN and States to advocate and obtain agreemen"{
     note "see WP9 – communication"
     start 2020-09-01
     end   2020-10-31
+    responsible ikore, nvri, Isioma
   }
-  
+
   task wp3_3 "Selection of field vets who will be trained"{
     start 2020-11-01
     end   2020-11-31
+    responsible ikore, nvri
   }
 
   task "Selection of CAHW"{
     note "Cf selection criteria from VCN + Lidiski criteria (aware of the leadership, gender, and of the different groups pastoralists/Sendatry"
     start 2020-12-01
     end   2020-12-31
+    responsible nvri
   }
 
 }
