@@ -6,19 +6,8 @@ task WP1 "WP1: Identify study areas and training needs"{
 
     task t1 "Ask CVO for Monthly disease and vaccination reports"{
       start 2020-03-01
-      end 2020-03-31
+      end 2020-04-31
       responsible Raphael, Arnaud
-      note "Data requiered at LGO level for the states of Plateau and Bauchi"
-      journalentry 2020-05-13 "Reports are not still sent"{
-        author Raphael
-        alert red
-        summary -8<-
-          After two recalling by emails, we have no answer from the FMARD.
-        ->8-
-        details -8<-
-          We have already contacted the FMARD. What can be the next step?
-        ->8-
-      }
     }
 
     task t1_delivery "Monthly disease and vaccination reports have been sent"{
@@ -29,14 +18,14 @@ task WP1 "WP1: Identify study areas and training needs"{
 
     task t2 "Ask CVO for demography Small Ruminant and Poultry"{
       start 2020-03-01
-      end 2020-03-31
+      end %{${now} + 1m}
       responsible Arnaud, Raphael
       note "At LGO level for the states of Plateau and Bauchi"
-      journalentry 2020-04-16 "Reports are not still sent"{
+      journalentry 2020-06-16 "Reports have been sent"{
         author Raphael
-        alert red
+        alert yellow
         summary -8<-
-          Where are we in this task?
+          Check if done.
         ->8-
       }
     }
@@ -57,7 +46,6 @@ task WP1 "WP1: Identify study areas and training needs"{
     task t4  "Ask T Bidoli/BoS (Felicia Ofor) data on socio-eco"{
       start 2020-03-01
       end   2020-03-31
-      ${checktask}
       responsible Alexis
       note  "At LGO level for plateau + Bauchi"
     }
@@ -83,21 +71,27 @@ task WP1 "WP1: Identify study areas and training needs"{
 
     task t7 "Contact solar panel consultants to know the cost"{
       start 2020-03-01
-      end   2020-03-31
-      ${checktask}
+      end   2020-06-31
       responsible Ijeoma, Dauda, Tancrede
       note "Based on NVRI, Ikore, EU contacts"
     }
 
     task t7_delivery "Solar panel consultants rovide costs"{
       depends !t7
+      end     %{${now} + 1m}
       flags milestones
     }
 
     task t8 "Start looking at data obtained (monthly report, demo,socio) to clean before training"{
       depends !t4
       end   %{${now} + 1m}
-      ${checktask}
+      journalentry 2020-07-4 "Ongoing task"{
+        author Raphael
+        alert yellow
+        summary -8<-
+          Alexis started the analysis.
+        ->8-
+      }
       responsible Vladimir, Alexis, Bashir
     }
 

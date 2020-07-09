@@ -43,17 +43,33 @@ task WP5 "WP5: PPR and ND Epidemiology"{
   }
 
   task wp5_6 "Design survey in animal demography and mobility, epidemiology, risk mapping"{
-    start 2020-07-01
-    end   2020-09-15
+    depends !!WP4.wp4_2
+    plan:start 2020-07-01
+    plan:end   2020-08-15
+    delayed:start 2021-01-15
+    delayed:end   2021-01-17
     responsible Andrea, Marion, Vladimir, Cecile, Raphael, Mohammad
 
   }
 
   task wp5_7 "Implement survey in pilot"{
-    note "3 multi-disciplinary teams (NVRI, 20 surveys per team"
-    start 2020-10-01
-    end   2020-12-31
+    depends !wp5_6
+    note "3 multi-disciplinary teams (NVRI, 20 surveys per team)"
+    plan:start 2020-10-01
+    plan:end   2020-12-31
+    delayed:start 2021-02-15
+    delayed:end   2021-02-17
     responsible Mohammad, Marion
+    journalentry 2020-07-09 "Covid-19 impact"{
+        author Raphael
+        alert yellow
+        summary -8<-
+          We still do not know if we will be able to implement the survey
+          pilot during this period. It will depend on WP4 progress
+          (traveling of PE trainers to Nigeria complete the training with
+          the practical part) and on the possibility to go for fieldwork.
+        ->8-
+    }
   }
 
 }

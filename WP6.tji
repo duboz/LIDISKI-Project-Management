@@ -13,9 +13,20 @@ task WP6 "WP6: Socio-economic context of PPR and ND"{
 
   task wp6_2 "Preliminary field investigation"{
     note "Qualitative interviews with a small sample of famers"
-    start 2020-05-01
-    end   2020-06-31
+    plan:start 2020-05-01
+    plan:end   2020-06-31 
     responsible Alexis, Abdrahmane, Thomas
+    journalentry 2020-07-09 "Covid-19 impact- Canceled"{
+        author Raphael
+        alert red
+        summary -8<-
+          It will not be possible to do it before the pilot survey starts (due in October 2020).
+          Instead of this preliminary field investigation, we agreed, in an internal meeting
+          that we will rely mostly on the expertise of our collaborators of NAERLS and NVRI,
+          who have a deep knowledge of the local socio-economic and epidemiological context
+          of the pilot survey zone to build the pilot survey protocol.
+        ->8-
+    }    
   }
 
   task wp6_3 "Implement survey in pilot"{

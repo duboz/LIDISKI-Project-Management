@@ -11,15 +11,35 @@ task WP4 "WP4: Training in quantitative and participatory methods"{
     responsible Mohammad
   }
   task wp4_2 "Training in statistics"{
-   start 2020-05-01
-   end   2020-05-15
+   plan:start    2020-05-01
+   plan:end      2020-05-15
+   delayed:start 2021-01-01
+   delayed:end   2021-01-07
    responsible Mohammad, Vladimir
+   journalentry 2020-07-09 "Covid-19 Impact"{
+        author Raphael
+        alert yellow
+        summary -8<-
+          Cancelled for this year due to travel restrictions (covid19).
+          Postponed for year 2021. This training is indispensable for the pilot survey.
+        ->8-
+    }
  }
 
   task wp4_3 "Training in sampling design"{
    start 2020-05-16
    end   2020-05-31
+   delayed:start 2020-07-16
+   delayed:end   2020-08-16
    responsible Mohammad, Vladimir
+   journalentry 2020-07-09 "Covid-19 Impact"{
+        author Raphael
+        alert yellow
+        summary -8<-
+          The initial training session was canceled due to travel restrictions (covid19).
+          Training performed remotely in July-August 2020 by Vladimir Grosbois and Muhammad Bashir Bolajoko.
+        ->8-
+    }
  }
 
   task wp4_4 "NVRI send to CIRAD 1 page CV of participants"{
@@ -35,17 +55,54 @@ task WP4 "WP4: Training in quantitative and participatory methods"{
     responsible Mohammad
   }
 
-  task wp4_6 "Training in risk mapping"{
-    start 2020-09-16
-    end   2020-09-23
-    responsible Cecile, Ijeoma, Mohammad
+  task wp4_6_1 "Training in risk mapping"{
+    depends !wp4_6
+    plan:start    2020-09-16
+    plan:end      2020-09-23
+    delayed:start 2021-02-01
+    delayed:end   2021-02-16
+    responsible Cecile, Ijeoma, Mohammad, Andrea
+    journalentry 2020-07-09 "Covid-19 Impact"{
+        author Raphael
+        alert yellow
+        summary -8<-
+          Training performed partially remotely in July-August 2020 by Cecile Sqwarzoni and Andréa Apolloni.
+          The rest of the training will be implemented in 2021.
+        ->8-
+    }
   }
 
-  task wp4_7 "Training in participatory methods"{
+  task wp4_6 "Remote partial training in risk mapping"{
+    delayed:start 2020-07-01
+    delayed:end   2020-08-16
+    responsible Cecile, Ijeoma, Mohammad, Andrea
+  }
+
+  task wp4_7_1 "Training in participatory methods"{
+    depends !wp4_7
     start 2020-09-24
     end   2020-09-31
-    responsible nvri, Alexis, Raphael, Arnaud
+    delayed:start 2020-09-25
+    delayed:end   2020-10-16
+    responsible nvri, Alexis, Marion, Isioma
+    journalentry 2020-07-09 "Covid-19 Impact"{
+        author Raphael
+        alert yellow
+        summary -8<-
+          Training performed partially remotely in July-August 2020 by
+          Marion Bordier, Alexis Delabouglise, Muhammad Bashir Bolajoko
+          and Victoria isioma Ifende. A practical training will be performed
+          in end of September – early October if the conditions allow it.
+        ->8-
+    }    
   }
+  
+  task wp4_7 "Remote partial training in participatory methods"{
+    delayed:start 2020-07-15
+    delayed:end   2020-08-31
+    responsible nvri, Alexis, Marion, Isioma
+  }
+  
 
   task wp4_8 "NVRI and ABU send to CIRAD 1 page CV of participants"{
     note "to (i) training in socio-economics (including 2 candidate Msc students from NVRI and 2 Msc students from ABU)"
@@ -57,7 +114,20 @@ task WP4 "WP4: Training in quantitative and participatory methods"{
   task wp4_9 "Training in socio-economics"{
     start 2020-09-24
     end   2020-09-31
+    delayed:start 2021-03-01
+    delayed:end   2021-03-16
     responsible Alexis, Abdrahmane, Thomas
+    journalentry 2020-07-09 "Covid-19 Impact"{
+        author Raphael
+        alert yellow
+        summary -8<-
+          Basic principles of sampling in the context of pastoral mobility,
+          questionnaire testing and interview will be taught in end of
+          September - early October during the questionnaire testing sessions
+          of the socio-economic survey (if the conditions allow international
+          travels to Nigeria). The core of the training is postponed in 2021.
+        ->8-
+    }     
   }
 
 }

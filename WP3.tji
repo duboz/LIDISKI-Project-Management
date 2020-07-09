@@ -7,13 +7,13 @@ task WP3 "WP3: Capacity building of field actors in disease surveillance and con
   task wp3_1 "Engagement with VCN"{
      note "check possibilities to integrate some modules to meet Lidiski outputs (and may be using Lidiski experience to update curriculum in the coming time)"
      start 2020-05-01
-     end   2020-08-31
+     end   2020-07-04
      responsible ikore
   }
 
-  task wp3_2 "Engagement with VCN and States to advocate and obtain agreemen"{
+  task wp3_2 "Engagement with VCN and States to advocate and obtain agreement"{
     note "see WP9 – communication"
-    start 2020-09-01
+    start 2020-07-04
     end   2020-10-31
     responsible ikore, nvri, Isioma
   }

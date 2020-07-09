@@ -4,7 +4,7 @@
  * TaskJuggler project management tool.
  */
 
-project EFIKO "LIDISKI"  2020-01-02 +1y {
+project EFIKO "LIDISKI"  2020-01-02 +1.5y {
   # Set the default time zone for the project. If not specified, UTC
   # is used.
   timezone "Europe/Paris"

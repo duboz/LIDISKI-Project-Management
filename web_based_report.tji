@@ -123,8 +123,9 @@ textreport frame "" {
 
 # A traditional Gantt chart with a project overview.
 taskreport overview "" {
+  scenarios plan, delayed
   header -8<-
-    === Original Project Plan - 10 Work Packages ===
+    === Project Plan - 10 Work Packages ===
   ->8-
   columns name {width 400}, start, end,
           responsible {listtype bullets
@@ -170,7 +171,7 @@ taskreport overview "" {
             alert { tooltip plan.journal
                             != '' "<-query attribute='journal'->" width 150 },
             status { width 150 }
-    scenarios plan
+    scenarios delayed
 
     taskreport dashboard "" {
       headline "Project Dashboard (<-query attribute='now'->)"
@@ -190,15 +191,15 @@ taskreport overview "" {
     }
     taskreport completed "" {
       headline "Already completed tasks"
-      hidetask plan.end >= ${now}
+      hidetask delayed.end >= ${now}
     }
     taskreport ongoing "" {
       headline "Ongoing tasks"
-      hidetask ~((plan.start <= ${now}) & (plan.end > ${now}))
+      hidetask ~((delayed.start <= ${now}) & (delayed.end > ${now}))
     }
     taskreport future "" {
       headline "Future tasks"
-      hidetask ~(plan.start > ${now})
+      hidetask ~(delayed.start > ${now})
     }
   }
 
@@ -223,7 +224,7 @@ taskreport overview "" {
   }
 
   taskreport WP2 "" {
-    scenarios plan
+    scenarios plan, delayed
     headline "WP2"
     caption -8<-
     * Coordinators : Arnaud Bataille, Francesco Bonfante, Alice Bianco, Shitu Ismail, Reuben Ocholi
@@ -255,7 +256,7 @@ taskreport overview "" {
   }
 
   taskreport WP4 "" {
-    scenarios plan
+    scenarios plan, delayed
     headline "WP4"
     caption -8<-
     * Coordinators : Alexis Delabouglisse, Vladimir Grosbois, Mohammad B. Bolajoko, Isioma Rapu Ifende
@@ -271,7 +272,7 @@ taskreport overview "" {
 }
 
 taskreport WP5 "" {
-  scenarios plan
+  scenarios plan, delayed
   headline "WP5"
   caption -8<-
     * Coordinators : Marion Bordier, Francesco Lamacchia, P. Mulatti, Shitu Ismail, Timothy Yusufu Woma, Mohammad B. Bolajoko
@@ -287,7 +288,7 @@ taskreport WP5 "" {
 }
 
 taskreport WP6 "" {
-  scenarios plan
+  scenarios plan, delayed
   headline "WP6"
   caption -8<-
     * Coordinators : Alexis Delabouglisse, Thomas Duniya
@@ -303,7 +304,7 @@ taskreport WP6 "" {
 }
 
 taskreport WP7 "" {
-  scenarios plan
+  scenarios plan, delayed
   headline "WP7"
   caption -8<-
     * Coordinators : Raphaël Duboz, Mohammad B. Bolajoko
@@ -319,7 +320,7 @@ taskreport WP7 "" {
 }
 
 taskreport WP8 "" {
-  scenarios plan
+  scenarios plan, delayed
   headline "WP8"
   caption -8<-
     * Coordinators : Raphaël Duboz, Mohammad B. Bolajoko
@@ -335,7 +336,7 @@ taskreport WP8 "" {
 }
 
 taskreport WP9 "" {
-  scenarios plan
+  scenarios plan, delayed
   headline "WP9"
   caption -8<-
     * Coordinators : Ijeoma Ohuruogu, Claudio  Mantovani, Isioma Rapu Ifende
@@ -351,7 +352,7 @@ taskreport WP9 "" {
 }
 
 taskreport WP10 "" {
-  scenarios plan
+  scenarios plan, delayed
   headline "WP10"
   caption -8<-
     * Coordinators : Ijeoma Ohuruogu, TBD
@@ -373,7 +374,7 @@ taskreport deliveries "" {
   #taskroot deliveries
   hidetask ~milestones
   hideresource @all
-  scenarios plan #, delayed
+  scenarios plan, delayed
 }
 
 # A list of all employees with their contact details.

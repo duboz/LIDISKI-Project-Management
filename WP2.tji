@@ -5,8 +5,23 @@
 task WP2 "WP2: Capacity building for laboratory and vaccine production"{
 
 task t1 "Ibet to come to NVRI for first evaluation for vaccine production"{
-  start 2020-03-24
-  end   2020-03-31
+  plan:start 2020-03-24
+  plan:end   2020-03-31
+  delayed:start 2021-03-24
+  delayed:end   2021-03-31
+    journalentry 2020-07-09 "Covid-19 impact"{
+        author Raphael
+        alert yellow
+        summary -8<-
+              - Ibet will not be allowed to travel to Nigeria before early 2021.
+              Activity is either postponed until 2021, or another firm/team is contacted
+              to take charge of the activity. Wait until September (if travels not possible in 2020,
+              no use to look for other options).
+              - Regarding the evaluation for vaccine production, IZSVe provided NVRI with
+              an assessment questionnaire. Fulfilment of the survey is ongoing and results
+              will possibly be share with Ibet. 
+        ->8-
+    }  
   responsible Arnaud
 }
 
@@ -23,26 +38,29 @@ task wp2_3 "Collect data with temperature recorders (N=4) to confirm that equipm
 }
 
 task wp2_4 "If OK buy another 10-15"{
-  end   2020-04-31
+  plan:start 2020-05-01
+  delayed:start ${now}
   responsible TBD
   depends !wp2_3
 }
 
 task wp2_5 "Collect data with all recorders in plateau and Bauchi"{
-  start 2020-05-31
-  end   2020-09-31
+  plan:start 2020-05-31
+  end        2020-09-31
+  delayed:start 2020-07-01
+  ${checktask}
   responsible Shitu, Woma
 }
 
 task wp2_6 "Mission with consultant for solar panel"{
-  start 2020-04-30
-  end   2020-05-31
+  depends !wp2_7
   responsible Joanis, Tancrede
 }
 
 task wp2_7 "Tender process for solar panel"{
   start 2020-06-30
   end   2020-07-31
+  delayed:start 2020-07-10
   responsible Arnaud, Raphael, TBD
 }
 
@@ -79,20 +97,28 @@ note "swabs from active surveillance, organs from passive surveillance (clincal 
 }
 
 task wp2_13 "Training for ND"{
-  start 2020-11-14
-  end   2020-12-21
+  plan:start 2020-11-14
+  plan:end   2020-12-21
+  delayed:start 2021-02-14
+  delayed:end   2021-02-21
   responsible Alice
 }
 
 task wp2_14 "Confirm if further PPR sampling necessary in Plateau and Bauchi"{
-  start 2020-03-14
-  end   2020-03-21
+  plan:start 2020-03-14
+  plan:end   2020-03-21
   responsible Arnaud, Woma
+}
+
+task wp2_14_1 "Shipp PPR samples to Cirad"{
+  depends !wp2_14
+  start 2020-09-1
 }
 
 task wp2_15 "Collect and genotyping new samples for PPR through active surveillance if necessary"{
   start 2020-03-24
   end   2020-04-31
+  delayed:end ${now}
   responsible Woma, Samuel
 }
 
@@ -103,8 +129,10 @@ task wp2_16 "Samples sent to CIRAD (if any)"{
 }
 
 task wp2_17 "Training for PPR (S.Mantip)"{
-  start 2020-05-15
-  end   2020-08-31
+  plan:start 2020-05-15
+  plan:end   2020-08-31
+  delayed:start 2020-09-01
+  delayed:end   2020-12-31
   responsible Arnaud
 }
 

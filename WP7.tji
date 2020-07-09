@@ -5,20 +5,24 @@
 task WP7 "WP7: Development of toolkit for disease surveillance and control"{
 
   task t1 "Design Kobocollect fitting to lidiski needs"{
-    start 2020-03-07
-    end   2020-05-31
+    plan:start 2020-03-07
+    plan:end   2020-05-31
+    delayed:end 2020-08-01
     responsible Raphael, David_Chav, Gbenga, Bashir
   }
 
   task t2 "Testing KoboCollect on the field and producing report"{
-    start 2020-05-15
-    end   2020-07-31
+    plan:start 2020-05-15
+    plan:end   2020-07-31
+    delayed:start 2020-08-15
+    delayed:end   2020-08-31
+    ${checktask}
     responsible Bashir, Sandra
   }
 
   task t3 "Training of field scientists to kobocolect"{
-    start 2020-07-15
-    end   2020-08-31
+    depends !t2
+    duration 1m
     responsible Gbenga
   }
 
@@ -43,8 +47,8 @@ task WP7 "WP7: Development of toolkit for disease surveillance and control"{
   }
 
   task t7 "Prepare ToR engineer to Ikore"{
-    start ${now}
-    end   %{${now} + 2d}
+    start 2020-04-01
+    end   2020-05-01
     responsible Raphael
   }
 
