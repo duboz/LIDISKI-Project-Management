@@ -125,7 +125,7 @@ textreport frame "" {
 taskreport overview "" {
   scenarios plan, delayed
   header -8<-
-    === Project Plan - 10 Work Packages ===
+    === Project Plan - Plan and Actual scenarios ===
   ->8-
   columns name {width 400}, start, end,
           responsible {listtype bullets
@@ -141,7 +141,6 @@ taskreport overview "" {
     === Current Status ===
 
     The project has been delayed due to COVID-19 crisis.
-    See [[Deliveries]] for the impact on the delivery dates.
 
     === Coordination ===
 
