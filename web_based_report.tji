@@ -374,7 +374,7 @@ taskreport deliveries "" {
   #taskroot deliveries
   hidetask ~milestones
   hideresource @all
-  scenarios plan, delayed
+  scenarios delayed
 }
 
 # A list of all employees with their contact details.
